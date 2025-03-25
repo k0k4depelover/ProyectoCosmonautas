@@ -27,12 +27,16 @@ public class NodoMision {
 	public void establecerSiguiente(NodoMision mision) {
 		this.sig=mision;
 	}
-    public boolean agregarAstronauta(NodoAVL astro) {
-        if (this.astronautas.size() >= MAX_ASTRONAUTAS) {
-            System.out.println("Error: No se pueden agregar más astronautas a la misión " + this.nomMision);
-            return false;
-        }
-        this.astronautas.add(astro);
+    public boolean agregarAstronauta() {
+        for(int i=0; i <MAX_ASTRONAUTAS; i++) {
+         NodoAVL mayor= obtenerMayor();
+         if (mayor != null){
+             this.astronautas.add(mayor);
+         }
+         else{
+             return false;
+         }
+        
         return true; 
     }
 }

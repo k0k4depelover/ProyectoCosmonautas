@@ -101,4 +101,13 @@ public class ArbolAvlAstronautas {
         	return rotacionSimpleIzquierda(z);
         }
         
+        public NodoAVL obtenerMayorRecursivo(NodoAVL nodo){
+            if(nodo.obtenerDerecha()== null || nodo==null){
+                return nodo;
+            }
+            nodo= obtenerMayor(nodo.obtenerDerecha());
+        }
+        public NodoAVL  obtenerMayor(){
+            return obtenerMayor(raiz);
+        }
 }
