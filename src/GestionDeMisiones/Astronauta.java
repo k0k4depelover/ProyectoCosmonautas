@@ -1,10 +1,7 @@
 
 package GestionDeMisiones;
 
-/**
- *
- * @author sergio cermeño
- */
+
 public class Astronauta {
     public String nomAstro, apellAstro, nacionalidadAstro;
     
