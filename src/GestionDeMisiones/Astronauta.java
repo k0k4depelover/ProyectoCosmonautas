@@ -26,7 +26,7 @@ public class Astronauta {
     public void establecerNombreAstro(String nomAstro){
         this.nomAstro=nomAstro;
     }
-    public void establecerNombreAstro(String nomAstro){
+    public void establecerApellAstro(String nomAstro){
         this.nomAstro=nomAstro;
     }
     public void establecerNacionAstro(String nacionAstro){
