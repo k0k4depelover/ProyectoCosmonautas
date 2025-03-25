@@ -105,9 +105,9 @@ public class ArbolAvlAstronautas {
             if(nodo.obtenerDerecha()== null || nodo==null){
                 return nodo;
             }
-            nodo= obtenerMayor(nodo.obtenerDerecha());
+            nodo= obtenerMayorRecursivo(nodo.obtenerDerecha());
         }
-        public NodoAVL  obtenerMayor(){
+        public NodoAVL obtenerMayor(){
             return obtenerMayor(raiz);
         }
 }
