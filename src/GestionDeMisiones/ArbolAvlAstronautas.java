@@ -51,10 +51,16 @@ public class ArbolAvlAstronautas {
             	return rotacionSimpleDerecha(nodo);
             }
             
+            if(balance >1 && horasExp > nodo.obtenerIzquierda().obtenerHorasExp()) {
+            	return rotacionDobleIzquierdaDerecha(nodo);
+            }
+            if(balance < -1 && horasExp < nodo.obtenerDerecha().obtenerHorasExp() ) {
+            	return rotacionDobleDerechaIzquierda(nodo);
+            }
             return nodo;
         }
         
-        @SuppressWarnings("unused")
+
 		private int altura(NodoAVL nodo) {
         	return (nodo==null) ? 0: nodo.altura; 
         }
@@ -84,6 +90,15 @@ public class ArbolAvlAstronautas {
         	return y;
         } 
         
-        
+        private NodoAVL rotacionDobleIzquierdaDerecha(NodoAVL z) {
+            z.establecerIzquierda(rotacionSimpleIzquierda(z.obtenerIzquierda()));
 
+            return rotacionSimpleDerecha(z);
+        }
+        
+        private NodoAVL rotacionDobleDerechaIzquierda(NodoAVL z) {
+        	z.establecerDerecha(rotacionSimpleDerecha(z.obtenerDerecha()));
+        	return rotacionSimpleIzquierda(z);
+        }
+        
 }
