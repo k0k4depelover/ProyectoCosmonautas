@@ -11,7 +11,46 @@ public class ArbolAvlAstronautas {
         NodoAVL nuevoNodo = new NodoAVL(astro, horasExp);
         raiz = insercionArbol(raiz, nuevoNodo);
     }
+    
+    public void eliminarAstronauta(NodoAVL astro) {
+        raiz = eliminar(raiz, astro);
+    }
+    private NodoAVL eliminar(NodoAVL nodo, NodoAVL astro) {
+        if (nodo == null) {
+            return null;
+        }
 
+        if (nodo.obtenerHorasExp() < astro.obtenerHorasExp()) {
+            nodo.establecerDerecha(eliminar(nodo.obtenerDerecha(), astro));
+        }
+
+        else if (nodo.obtenerHorasExp() > astro.obtenerHorasExp()) {
+            nodo.establecerIzquierda(eliminar(nodo.obtenerIzquierda(), astro));
+        } 
+        else {
+            int comparacionNombre = nodo.obtenerAstronauta().obtenerNombreAstro()
+                    .compareTo(astro.obtenerAstronauta().obtenerNombreAstro());
+            int comparacionApellido = nodo.obtenerAstronauta().obtenerApellAstro()
+                    .compareTo(astro.obtenerAstronauta().obtenerApellAstro());
+            
+            if (comparacionNombre == 0 && comparacionApellido == 0) {
+
+                if (nodo.obtenerIzquierda() == null && nodo.obtenerDerecha() == null) {
+                    return null;
+                }
+                if (nodo.obtenerIzquierda() == null) {
+                    return nodo.obtenerDerecha();
+                }
+                if (nodo.obtenerDerecha() == null) {
+                    return nodo.obtenerIzquierda();
+                }
+                NodoAVL sucesor = obtenerMenorRecursivo(nodo.obtenerDerecha());
+                nodo = sucesor;
+                nodo.establecerDerecha(eliminar(nodo.obtenerDerecha(), sucesor));
+            }
+        }
+        return nodo; 
+    }
     private NodoAVL insercionArbol(NodoAVL nodo, NodoAVL nuevoNodo) {
         if (nodo == null) {
             return nuevoNodo;
@@ -97,11 +136,21 @@ public class ArbolAvlAstronautas {
     public NodoAVL obtenerMayor() {
         return obtenerMayorRecursivo(raiz);
     }
+    public NodoAVL obtenerMenor() {
+    	return obtenerMenorRecursivo(raiz);
+    }
 
     private NodoAVL obtenerMayorRecursivo(NodoAVL nodo) {
         if (nodo == null || nodo.obtenerDerecha() == null) {
             return nodo;
         }
         return obtenerMayorRecursivo(nodo.obtenerDerecha());
+    }
+    
+    private NodoAVL obtenerMenorRecursivo(NodoAVL nodo) {
+        if (nodo == null || nodo.obtenerIzquierda() == null) {
+            return nodo;
+        }
+        return obtenerMenorRecursivo(nodo.obtenerIzquierda());
     }
 }

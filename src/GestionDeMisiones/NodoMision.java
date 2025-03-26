@@ -34,17 +34,23 @@ public class NodoMision {
 		this.sig=mision;
 	}
 	
-    public boolean agregarAstronautas(ArbolAvlAstronautas arbol) {
-        for(int i=0; i <MAX_ASTRONAUTAS; i++) {
-        	 NodoAVL mayor = arbol.obtenerMayor();
-         if (mayor != null){
-             this.astronautas.add(mayor);
-         }
-         else{
-             return false;
-         }      
-    }
-        return true; 
-}
+	public boolean agregarAstronautas(int cantAstronautas, ArbolAvlAstronautas arbol) {
+	    if (cantAstronautas > MAX_ASTRONAUTAS) {
+	        System.out.println("Número inválido de astronautas ingresado, debe ser menor o igual a " + MAX_ASTRONAUTAS + ".");
+	        return false;
+	    }
+	    for (int i = 0; i < cantAstronautas; i++) {
+	        NodoAVL mayor = arbol.obtenerMayor(); 
+	        if (mayor != null) {
+	            this.astronautas.add(mayor);
+	            arbol.eliminarAstronauta(mayor);  
+	        } else {
+	            System.out.println("No hay suficientes astronautas disponibles en el árbol.");
+	            return false;  
+	        }
+	    }
+	    return true;  
+	}
+
 
 }
