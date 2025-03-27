@@ -153,4 +153,22 @@ public class ArbolAvlAstronautas {
         }
         return obtenerMenorRecursivo(nodo.obtenerIzquierda());
     }
+    
+    public void inOrden() {
+    	 recorrerInOrdenRecursivo(raiz);
+    }
+    
+    private void recorrerInOrdenRecursivo(NodoAVL nodo) {
+    	if (nodo !=null) {
+    		recorrerInOrdenRecursivo(nodo.obtenerIzquierda());
+    		System.out.println(
+    				  "------------------------------------------------" +
+    				"Nombre: " + nodo.obtenerAstronauta().obtenerNombreAstro() + "\n"
+    				+ "Apellido: " + nodo.obtenerAstronauta().obtenerApellAstro() + "\n" 
+    				+  "Nacionalidad: " + nodo.obtenerAstronauta().obtenerNacionAstro()+ "\n" 
+    				+ "Horas Experiencia: "+ nodo.obtenerHorasExp() +"\n"
+    				+ "------------------------------------------------");
+    		recorrerInOrdenRecursivo(nodo.obtenerDerecha());
+    	}
+    }
 }
