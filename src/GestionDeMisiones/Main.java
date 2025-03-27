@@ -62,8 +62,8 @@ public class Main {
                     break; // Se agregó el break
                 
                 case 5:
-                    listaMisiones.eliminarMision(arbol); // Se corrigió la llamada
-                    break; // Se agregó el break
+                    listaMisiones.eliminarMision(arbol); 
+                    break; 
                 
                 case 6:
                     System.out.println("Saliendo del programa...");
